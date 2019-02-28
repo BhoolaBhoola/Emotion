@@ -10,7 +10,7 @@ from utils.inference import apply_offsets
 from utils.inference import load_detection_model
 from utils.preprocessor import preprocess_input
 
-USE_WEBCAM = True # If false, loads video file source
+USE_WEBCAM = False  # If false, loads video file source
 
 # parameters for loading data and images
 emotion_model_path = './models/emotion_model.hdf5'
@@ -33,14 +33,18 @@ emotion_window = []
 # starting video streaming
 
 cv2.namedWindow('window_frame')
-video_capture = cv2.VideoCapture(0)
+# video_capture = cv2.VideoCapture(0)
+
 
 # Select video or webcam feed
 cap = None
-if (USE_WEBCAM == True):
-    cap = cv2.VideoCapture(0) # Webcam source
+if USE_WEBCAM == True:
+    cap = cv2.VideoCapture(0)  # Webcam source
 else:
-    cap = cv2.VideoCapture('./demo/dinner.mp4') # Video file source
+    # cap = cv2.VideoCapture('../videos/6614059835535133954.mp4')
+    # cap = cv2.VideoCapture('../videos/6620049294030277893.mp4')
+    cap = cv2.VideoCapture('../videos/6628669426822548741.mp4')
+    # cap = cv2.VideoCapture('./demo/dinner.mp4') # Video file source
 
 while cap.isOpened(): # True:
     ret, bgr_image = cap.read()
